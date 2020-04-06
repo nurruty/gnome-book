@@ -10,9 +10,9 @@ if (process.env.WEBPACK) {
 const App = props => (
   <div>
     <Header />
-  <div className="App">
-    {props.children}
-  </div>
+    <div className="App">
+      {props.children}
+    </div>
   </div>
 );
 

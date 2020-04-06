@@ -17,7 +17,7 @@ const calculateProfessions = (gnomes) => {
     (value) => {
       _.map(value.professions, (el) => {
         if (!professions[el]) professions[el] = [];
-        professions[el] = _.concat(professions[el], [value.name])
+        professions[el] = _.concat(professions[el], [value.name]);
       });
     }
   );

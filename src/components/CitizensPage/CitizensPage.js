@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Meta from 'react-helmet';
 import { fetchGnomesIfNeeded } from '../../actions';
-import CitizensList from '../CitizensList/CitizensList'
+import CitizensList from '../CitizensList/CitizensList';
+import Loading from '../Loading/Loading';
 
 if (process.env.WEBPACK) {
   require('./CitizensPage.css'); // eslint-disable-line global-require
@@ -52,9 +53,9 @@ export class CitizensPage extends Component {
           link={head.link}
           meta={head.meta}
         />
-      <h3>Citizens</h3>
+        <h3>Citizens</h3>
         {isEmpty
-          ? (isFetching ? <h3>Loading...</h3> : <h4 className="HomePage-message">Empty :(</h4>)
+          ? <div style={{ paddingTop: '25%' }}><Loading /></div>
           : <div style={{ opacity: isFetching ? 0.5 : 1 }}>
             <CitizensList citizens={gnomes} />
           </div>

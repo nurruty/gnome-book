@@ -5,6 +5,8 @@ import { Link } from 'react-router';
 import Meta from 'react-helmet';
 import { find } from 'lodash';
 import { fetchGnomesIfNeeded } from '../../actions';
+import LazyLoad from 'react-lazyload';
+import Loading from '../Loading/Loading';
 // Import can't be in conditional so use require.
 if (process.env.WEBPACK) {
   require('./GnomePage.css'); // eslint-disable-line global-require
@@ -34,7 +36,7 @@ export class GnomePage extends Component {
     };
   }
   static getGnome(props) {
-    if (isNaN(props.params.gnomeID)){
+    if (isNaN(props.params.gnomeID)) {
       const gnomeName = props.params.gnomeID || '';
       return find(props.gnomes, { name: gnomeName }) || {};
     }
@@ -63,73 +65,79 @@ export class GnomePage extends Component {
         <div className="row">
           <div className="col-md-8">
             <div className="card">
-            <div className="card-header">
+              <div className="card-header">
                 <h5 className="card-category">{gnome.name}</h5>
-                
+
               </div>
               <div className="card-body">
                 <div className="chart-area">
-                {isEmpty
-                  ? (isFetching ? <h3>Loading...</h3> : <h4 className="HomePage-message">Empty :(</h4>)
-                  :  <img src={gnome.thumbnail} alt="..." />
+                  {isEmpty
+                  ? (isFetching ? <Loading /> : <h4 className="HomePage-message">Empty :(</h4>)
+                  : <img src={gnome.thumbnail} alt="..." />
                 }
                 </div>
               </div>
               <div className="card-footer">
                 <div className="stats">
                   <div className="row">
-                    <div className="col-sm-6">
-                    <label>Height:</label>
-                      {gnome.height}  
+                    <div className="left col-xs-6">
+                      <label>Height:</label>
+                      {Math.round(parseInt(gnome.height), -1)}
                     </div>
-                    <div className="col-sm-6">
-                    <label>Age:</label>
+                    <div className="col-xs-6">
+                      <label >Age:</label>
                       {gnome.age}
-                   
+
                     </div>
                   </div>
                   <div className="row">
-                    <div className="col-sm-6">
+                    <div className="left col-xs-6">
                       <label>Weight:</label>
-                      {gnome.weight}
+                      {Math.round(parseInt(gnome.weight), -1)}
                     </div>
-                    <div className="col-sm-6">
-                    <label>Hair:</label>
-                      {gnome.hair_color}  
-                    </div>    
+                    <div className="col-xs-6">
+                      <label >Hair:</label>
+                      {gnome.hair_color}
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <div className='col-md-4'>
+          <div className="col-md-4">
             <div className="card">
               <div className="card-body">
                 <div className="row">
-                  <div>
-                  <h5>Professions</h5>
+                  <div className="col-12 card-title">
+                    <h5>Professions</h5>
                   </div>
-                  <div>
-                    <ol>
-                    {professions ? professions.map((profession, i) =>
-                      <li key={i} className="list-item">
-                        {profession}
-                      </li>
-                    ) : <div>Unemployeed :(</div>}
+                  <div className="">
+                    <ol style={{ listStyleType: 'none' }}>
+                      {professions ? professions.map((profession, i) =>
+                        <li key={i} className="list-item">
+                          {profession}
+                        </li>
+                      ) : <div>Unemployeed :(</div>}
                     </ol>
                   </div>
                 </div>
+              </div>
+            </div>
+            <div className="card">
+              <div className="card-body">
                 <div className="row">
-                  <h5>Friends</h5>
-                  <div>
-                    <ol>
-                    {friends ? friends.map((friend, i) =>
-                      <Link to={`/gnome/${friend}`}>
-                      <li key={i} className="list-item">
-                        {friend}
-                      </li>
-                      </Link>
-                    ) : <div>Need some friends :(</div>}
+                  <div className="col-12 card-title">
+                    <h5>Friends</h5>
+                  </div>
+                  <div className="">
+                    <ol style={{ listStyleType: 'none' }}>
+                      {friends ? friends.map((friend, i) =>
+                        <Link to={`/gnome/${friend}`}>
+                          <li key={i} className="list-item">
+                            {friend}
+                          </li>
+                        </Link>
+                      ) : <div>Need some friends :(</div>}
                     </ol>
                   </div>
                 </div>

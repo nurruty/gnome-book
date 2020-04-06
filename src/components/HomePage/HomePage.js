@@ -61,22 +61,22 @@ export class HomePage extends Component {
             </Link>
           </div>
           <div className="col-6">
-          <Link to={'/professions'}>
-            <InfoCard title="Different Professions" data={Object.keys(professions).length} />
-          </Link>
+            <Link to={'/professions'}>
+              <InfoCard title="Different Professions" data={Object.keys(professions).length} />
+            </Link>
           </div>
         </div>
 
         <h3>Famous Citizents</h3>
-        <div className='row'>
+        <div className="row">
           <div className="col-lg-4">
             <PeopleCard title="John Snow" data={'35'} />
           </div>
           <div className="col-lg-4">
-          <PeopleCard title="Donald Trump" data={'35'} />
+            <PeopleCard title="Donald Trump" data={'35'} />
           </div>
           <div className="col-lg-4">
-          <PeopleCard title="Madonna" data={'35'} />
+            <PeopleCard title="Madonna" data={'35'} />
           </div>
         </div>
       </div>
