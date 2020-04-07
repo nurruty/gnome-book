@@ -57,7 +57,8 @@ When data about the gnomes is received from a server, it is stored with Redux. W
 # Tests
 Testing is done with react-test-renderer. Each component has a testing file wich evaluates if the Component is well rendered with a particular set of data. 
 Run the test with:
-```npm run test
+```
+npm run test
 ```
 
 
