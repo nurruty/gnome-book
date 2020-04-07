@@ -41,7 +41,8 @@ After building the project, the result files are found in the public folder.
 
 In order to evaluate the app I suggest run it in production mode:
 
-```npm run server
+```
+npm run server
 ```
 
 # Problem
