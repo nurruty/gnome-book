@@ -8,17 +8,15 @@ import GnomeCard from '../GnomeCard/GnomeCard';
 import { Link } from 'react-router';
 import Loading from '../Loading/Loading';
 
-// Import can't be in conditional so use require.
 if (process.env.WEBPACK) {
   require('./HomePage.css'); // eslint-disable-line global-require
 }
 
 export class HomePage extends Component {
   static propTypes = {
-    isFetching: PropTypes.bool.isRequired,
     dispatch: PropTypes.func.isRequired,
     gnomes: PropTypes.arrayOf(PropTypes.object.isRequired),
-    //professions: PropTypes.object.isRequired,
+    professions: PropTypes.object.isRequired,
     important: PropTypes.arrayOf(PropTypes.object.isRequired)
   }
   static getMeta() {
@@ -45,8 +43,7 @@ export class HomePage extends Component {
     dispatch(fetchGnomesIfNeeded());
   }
   render() {
-    const { gnomes, professions, important, isFetching } = this.props;
-    console.log(important)
+    const { gnomes, professions, important } = this.props;
     const isEmpty = gnomes.length === 0;
     const head = HomePage.getMeta();
     return (

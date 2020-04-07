@@ -25,7 +25,7 @@ const ProfessionList = props => {
   }
 
   return (
-    <div className="container">
+    <div className="container ProfessionList">
       <div className="row">
         <div className="col-12">
           <form role="form">
@@ -49,7 +49,7 @@ const ProfessionList = props => {
                         {
                           _.take(props.professions[profession], 6).map((g, i) => 
                             
-                            <span title={g.name} className={i === 0 ? 'avatar rounded-circle' : 'avatar rounded-circle tail'}>
+                            <span title={g.name} className="avatar rounded-circle tail">
                                 <img alt={g.name} src={g.thumbnail} className="avatar" />
                             </span> 
                           )

@@ -2,17 +2,14 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { expect } from 'chai';
-import { HomePage } from './HomePage';
-import mockProps, { gnomes, professions } from '../../lib/mockProps';
+import { ProfessionsPage } from './ProfessionsPage';
+import mockProps, { professions } from '../../lib/mockProps';
 
 // Make a setup() helper that passes props and renders the component with shallow rendering
 function setup() {
   // Mock required props
   const props = mockProps();
-  props.gnomes = gnomes();
-  props.professions = professions();
-  props.important = gnomes();
-  const wrapper = shallow(<HomePage {...props} />);
+  const wrapper = shallow(<ProfessionsPage professions={professions()} isFetching={false} {...props} />);
 
   return {
     props,
@@ -20,10 +17,10 @@ function setup() {
   };
 }
 
-describe('HomePage', () => {
+describe('ProfessionsPage', () => {
   it('should render', () => {
     const { wrapper } = setup();
-    expect(wrapper.find('.HomePage')).to.have.length(1);
+    expect(wrapper.find('.ProfessionsPage')).to.have.length(1);
   });
 });
 /* eslint-enable no-undef */

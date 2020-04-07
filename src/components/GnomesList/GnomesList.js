@@ -12,7 +12,6 @@ if (process.env.WEBPACK) {
 }
 
 const GnomesList = (props) => {
-
   const [state, setState] = useState({ filter: '' });
 
   const handleChange = (e) => {
@@ -20,17 +19,16 @@ const GnomesList = (props) => {
   };
 
   let list = [];
-  if (props.citizens) {
+  if (props.gnomes) {
     list = state.filter.length > 0
-    ? _.filter(props.citizens, c => {
+    ? _.filter(props.gnomes, (c) => {
       return c.name.match(state.filter) != null;
     })
-    : list = props.citizens;
+    : list = props.gnomes;
   }
 
   return (
     <div className="container">
-      
       <div className="row">
         <div className="col-12">
           <form role="form">
@@ -41,28 +39,28 @@ const GnomesList = (props) => {
         </div>
         <div className="col-12">
           <ul className="GnomesList">
-            {list.map((citizen, i) =>
-              <LazyLoad key={citizen.id} placeholder={<div></div>}>
-                <li key={i} className="list-group-item list-citizen">
-                  <Link to={`/gnome/${citizen.name}`}>
+            {list.map((gnome, i) =>
+              <LazyLoad key={gnome.id} placeholder={<Loading />}>
+                <li key={i} className="list-group-item list-gnome">
+                  <Link to={`/gnome/${gnome.name}`}>
                     <div className="row">
                       <div className="col-6">
                         <span className="avatar-container">
-                          <img alt="" className="avatar" src={citizen.thumbnail} />
+                          <img alt="" className="avatar" src={gnome.thumbnail} />
                         </span>
                         <div className="info">
 
-                          {citizen.name}
+                          {gnome.name}
 
                         </div>
                       </div>
                       <div className="info col-2">
                         <span className="icon" title="Friends"><FontAwesomeIcon icon={faUserFriends} /></span>
-                        {citizen.friends ? citizen.friends.length : 0}
+                        {gnome.friends ? gnome.friends.length : 0}
                       </div>
                       <div className="info col-4">
                         <span className="icon" title="Professions"><FontAwesomeIcon icon={faBriefcase} /></span>
-                        {citizen.professions ? citizen.professions.length : 0}
+                        {gnome.professions ? gnome.professions.length : 0}
                       </div>
                     </div>
                   </Link>
@@ -77,7 +75,7 @@ const GnomesList = (props) => {
 };
 
 GnomesList.propTypes = {
-  citizens: PropTypes.array.isRequired
+  gnomes: PropTypes.array.isRequired
 };
 
 export default GnomesList;

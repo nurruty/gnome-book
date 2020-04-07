@@ -4,7 +4,7 @@ import LazyLoad from 'react-lazyload';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUserFriends, faBriefcase, faSearch } from '@fortawesome/free-solid-svg-icons';
+import { faUserFriends, faBriefcase } from '@fortawesome/free-solid-svg-icons';
 
 // Import can't be in conditional so use require.
 if (process.env.WEBPACK) {
@@ -12,16 +12,15 @@ if (process.env.WEBPACK) {
 }
 
 const GnomeCard = ({ gnome }) => {
-
   return (
-    <div className="gnome-card gnome-card-chart">
+    <div className="gnome-card gnome-card-chart GnomeCard">
       <div className="gnome-card-header">
         <h5 className="gnome-card-title">{gnome.name}</h5>
       </div>
       <div className="gnome-card-body">
         <LazyLoad key={gnome.id} placeholder={<Loading />}>
           <Link to={`gnome/${gnome.name}`}>
-          <img alt="..." src={gnome.thumbnail} />
+            <img alt="..." src={gnome.thumbnail} style={{ maxHeight: '600px' }} />
           </Link>
         </LazyLoad>
       </div>
@@ -41,7 +40,7 @@ const GnomeCard = ({ gnome }) => {
 ); };
 
 GnomeCard.propTypes = {
-  gnome: PropTypes.array.isRequired
+  gnome: PropTypes.object.isRequired
 };
 
 export default GnomeCard;

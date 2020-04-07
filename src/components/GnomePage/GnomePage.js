@@ -14,7 +14,8 @@ if (process.env.WEBPACK) {
 
 export class GnomePage extends Component {
   static propTypes = {
-    dispatch: PropTypes.func.isRequired
+    dispatch: PropTypes.func.isRequired,
+    isFetching: PropTypes.bool.isRequired
   }
   static getMeta(id) {
     return {
@@ -55,7 +56,7 @@ export class GnomePage extends Component {
     const professions = gnome.professions ? gnome.professions : [];
     const head = GnomePage.getMeta(gnome.id);
     return (
-      <div className="PostPage">
+      <div className="GnomePage">
         <Meta
           title={head.title}
           description={head.description}
@@ -73,7 +74,7 @@ export class GnomePage extends Component {
                 <div className="chart-area">
                   {isEmpty
                   ? (isFetching ? <Loading /> : <h4 className="HomePage-message">Empty :(</h4>)
-                  : <img src={gnome.thumbnail} alt="..." />
+                  : <img src={gnome.thumbnail} alt="..." style={{ maxHeight: '500px' }} />
                 }
                 </div>
               </div>
@@ -113,12 +114,12 @@ export class GnomePage extends Component {
                   </div>
                   <div className="container">
                     <div className="row">
-                      {professions ? professions.map((profession, i) =>
-                      <div className="col-sm-6">
-                        <Link to={`/profession/${profession}`}>
-                          {profession}
-                        </Link>
-                      </div>
+                      {professions ? professions.map(profession =>
+                        <div className="col-sm-6">
+                          <Link to={`/profession/${profession}`}>
+                            {profession}
+                          </Link>
+                        </div>
                       ) : <div>Unemployeed :(</div>}
                     </div>
                   </div>
@@ -132,15 +133,13 @@ export class GnomePage extends Component {
                     <h5>Friends</h5>
                   </div>
                   <div className="container">
-                    
-                      {friends ? friends.map((friend, i) =>
+                    {friends ? friends.map(friend =>
                       <div className="col-md-12">
                         <Link to={`/gnome/${friend}`}>
                           {friend}
                         </Link>
-                        </div>
+                      </div>
                       ) : <div>Need some friends :(</div>}
-                    
                   </div>
                 </div>
               </div>

@@ -46,7 +46,7 @@ export class GnomesPage extends Component {
     const isEmpty = gnomes.length === 0;
     const head = GnomesPage.getMeta();
     return (
-      <div className="HomePage">
+      <div className="GnomesPage">
         <Meta
           title={head.title}
           description={head.description}
@@ -57,7 +57,7 @@ export class GnomesPage extends Component {
         {isEmpty
           ? <div style={{ paddingTop: '25%' }}><Loading /></div>
           : <div style={{ opacity: isFetching ? 0.5 : 1 }}>
-            <GnomesList citizens={gnomes} />
+            <GnomesList gnomes={gnomes} />
           </div>
         }
       </div>

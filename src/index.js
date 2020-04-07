@@ -1,3 +1,6 @@
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min';
+
 import React from 'react';
 import { render } from 'react-dom';
 import { createStore, applyMiddleware, compose } from 'redux';
@@ -7,7 +10,7 @@ import thunk from 'redux-thunk';
 import createLogger from 'redux-logger';
 import gnomes from './reducers';
 import routes from './routes';
-import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 // This allows us to use Redux dev tools.
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose; // eslint-disable-line

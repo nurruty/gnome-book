@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Header from '../Header/Header';
 
-// Import can't be in conditional so use require.
 if (process.env.WEBPACK) {
   require('./App.css'); // eslint-disable-line global-require
 }

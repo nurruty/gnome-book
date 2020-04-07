@@ -4,8 +4,6 @@ import { connect } from 'react-redux';
 import Meta from 'react-helmet';
 import { fetchGnomesIfNeeded } from '../../actions';
 import ProfessionList from '../ProfessionList/ProfessionList';
-import Pagination from '../Pagination/Pagination';
-
 
 if (process.env.WEBPACK) {
   require('./ProfessionsPage.css'); // eslint-disable-line global-require
@@ -52,12 +50,12 @@ export class ProfessionsPage extends Component {
 
 
   render() {
-    const { isFetching, gnomes, professions } = this.props;
+    const { isFetching, professions } = this.props;
     const isEmpty = professions.length === 0;
     const head = ProfessionsPage.getMeta();
 
     return (
-      <div className="HomePage">
+      <div className="ProfessionsPage">
         <Meta
           title={head.title}
           description={head.description}
@@ -67,7 +65,7 @@ export class ProfessionsPage extends Component {
         <h3>Professions</h3>
 
         {isEmpty
-          ? (isFetching ? <h3>Loading...</h3> : <h4 className="HomePage-message">Empty :(</h4>)
+          ? (isFetching ? <h3>Loading...</h3> : <h4 className="ProfessionsPage-message">Empty :(</h4>)
           : <div style={{ opacity: isFetching ? 0.5 : 1 }}>
             <ProfessionList professions={professions} />
           </div>

@@ -1,19 +1,17 @@
 {
-  "name": "react-redux-boilerplate",
+  "name": "",
   "version": "0.0.1",
-  "description": "React Redux Boilerplate",
+  "description": "Front-end assigment",
   "main": "src/index.js",
   "scripts": {
     "lintJS": "eslint --fix ./src",
     "lintCSS": "stylelint src/**/*.css",
-    "precommit": "npm run lintJS --loglevel=silent && npm run lintCSS --loglevel=silent",
-    "prepush": "npm run test",
     "test": "babel-node node_modules/.bin/_mocha --require ./test/index.js -c src/**/*.test.js",
     "browser": "cross-env NODE_ENV=development babel-node ./server.js",
     "build": "webpack --config ./webpack.config.prod.js",
     "server": "npm run build && cross-env NODE_ENV=production babel-node ./server.js"
   },
-  "author": "John Hannah",
+  "author": "Nicolas Urruty",
   "license": "MIT",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.28",
@@ -24,10 +22,12 @@
     "chai": "3.5.0",
     "enzyme": "^3.1.0",
     "enzyme-adapter-react-16": "^1.0.2",
+    "jquery": "^3.4.1",
     "lodash": "^4.17.15",
+    "popper.js": "^1.16.1",
     "prop-types": "^15.6.0",
-    "react": "16.8.4",
-    "react-dom": "16.8.4",
+    "react": "^16.8.5",
+    "react-dom": "^16.8.5",
     "react-helmet": "^5.2.0",
     "react-lazyload": "^2.6.7",
     "react-redux": "^5.0.6",
@@ -74,15 +74,11 @@
     "postcss-nested": "1.0.0",
     "postcss-simple-vars": "3.0.0",
     "react-addons-test-utils": "15.3.2",
-    "react-test-renderer": "16.8.4",
+    "react-test-renderer": "^16.8.5",
     "style-loader": "0.13.1",
     "stylelint": "7.5.0",
     "webpack": "1.13.1",
     "webpack-dev-middleware": "1.6.1",
     "webpack-hot-middleware": "2.12.2"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/Lullabot/React-Redux-Boilerplate"
   }
 }
