@@ -3,3 +3,7 @@
 .HomePage-message {
   color: $gray;
 }
+
+h3 {
+  color: $gray;
+}

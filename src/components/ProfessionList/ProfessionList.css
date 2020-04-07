@@ -1,0 +1,41 @@
+.avatar {
+  vertical-align: middle;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.avatar-group {
+  /* margin-left: 15%; */
+}
+
+@media only screen and (max-width: 800px) {
+  .avatar-group {
+    visibility: hidden;
+    height: 0;
+  }
+}
+
+.tail{
+  /* margin-left: -8; */
+  margin-right: 5px;
+
+  box-shadow: 0 0 0 2px #fff, inset 0 0 0 1px rgba(0,0,0,.07);
+}
+
+.last {
+  padding: 15 5;
+  background-color: #f3f3f3;
+}
+
+input, input:focus {
+  width: 100%;
+  padding: 5px 20px;
+  border: 0;
+  border-color: transparent;
+  border-bottom: 1px solid #aaa;
+}
+
+.list {
+  padding: 0;
+}

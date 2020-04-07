@@ -3,14 +3,14 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Meta from 'react-helmet';
 import { fetchGnomesIfNeeded } from '../../actions';
-import CitizensList from '../CitizensList/CitizensList';
+import GnomesList from '../GnomesList/GnomesList';
 import Loading from '../Loading/Loading';
 
 if (process.env.WEBPACK) {
-  require('./CitizensPage.css'); // eslint-disable-line global-require
+  require('./GnomesPage.css'); // eslint-disable-line global-require
 }
 
-export class CitizensPage extends Component {
+export class GnomesPage extends Component {
   static propTypes = {
     isFetching: PropTypes.bool.isRequired,
     dispatch: PropTypes.func.isRequired,
@@ -44,7 +44,7 @@ export class CitizensPage extends Component {
   render() {
     const { gnomes, isFetching } = this.props;
     const isEmpty = gnomes.length === 0;
-    const head = CitizensPage.getMeta();
+    const head = GnomesPage.getMeta();
     return (
       <div className="HomePage">
         <Meta
@@ -53,11 +53,11 @@ export class CitizensPage extends Component {
           link={head.link}
           meta={head.meta}
         />
-        <h3>Citizens</h3>
+        <h3>Gnomes</h3>
         {isEmpty
           ? <div style={{ paddingTop: '25%' }}><Loading /></div>
           : <div style={{ opacity: isFetching ? 0.5 : 1 }}>
-            <CitizensList citizens={gnomes} />
+            <GnomesList citizens={gnomes} />
           </div>
         }
       </div>
@@ -74,4 +74,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps)(CitizensPage);
+export default connect(mapStateToProps)(GnomesPage);

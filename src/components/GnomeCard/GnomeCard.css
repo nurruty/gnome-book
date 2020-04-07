@@ -1,5 +1,7 @@
-.card {
-  border: 0;
+@import '../../css/variables.css';
+
+.gnome-card {
+  border: 0.7px solid #aaaa;
   border-radius: .1875rem;
   display: inline-block;
   position: relative;
@@ -8,26 +10,28 @@
   box-shadow: 0 1px 15px 1px rgba(39,39,39,.1);
 }
 
-.card .card-header:not([data-background-color]) {
+.gnome-card .gnome-card-header:not([data-background-color]) {
   background-color: transparent;
 }
 
-.card .card-header {
+.gnome-card .gnome-card-header {
   padding: 15px 15px 0;
   border: 0;
+  color: $gray;
 }
 
-.card-chart .card-header .card-title {
+.gnome-card-chart .gnome-card-header .gnome-card-title {
   margin-top: 10px;
   margin-bottom: 0;
-  font-size: 36px;
+  font-size: 25px;
 }
 
-.card .card-body {
-  padding: 15px 15px 10px;
+.gnome-card-body {
+ padding: 10px 1px 1px 1px;
+ border: 0;
 }
 
-.card-chart .chart-area {
+.gnome-card-chart .chart-area {
   height: 190px;
   width: calc(100% + 30px);
   margin-left: -15px;
@@ -35,12 +39,16 @@
   padding: 25px;
 }
 
-.card-data {
+.gnome-card-data {
   text-align: center;
   font-size: 60px;
   color: #949ea5;
 }
 
-.card-chart .card-footer {
-  margin-top: 15px;
+.gnome-card-footer {
+  margin-top: 5px;
+}
+
+.info {
+  text-align: center;
 }

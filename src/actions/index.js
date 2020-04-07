@@ -17,17 +17,30 @@ const calculateProfessions = (gnomes) => {
     (value) => {
       _.map(value.professions, (el) => {
         if (!professions[el]) professions[el] = [];
-        professions[el] = _.concat(professions[el], [value.name]);
+        professions[el] = _.concat(professions[el], [value]);
       });
     }
   );
   return professions;
 };
 
+const calculateImportantGnomes = (gnomes) => {
+  _.map(gnomes, (g) => {
+    g.friends ? g.friendsCount = g.friends.length : g.friendsCount = 0;
+    g.professions ? g.professionsCount = g.professions.length : g.professionsCount = 0;
+  });
+  return _.chain(gnomes)
+  .orderBy(['professionsCount'], 'desc')
+  .orderBy(['friendsCount' ], 'desc')
+  .take(3)
+  .value();
+};
+
 export const receiveGnomes = json => ({
   type: RECEIVE_GNOMES,
   gnomes: json.data.Brastlewark || [],
   professions: calculateProfessions(json.data.Brastlewark) || [],
+  important: calculateImportantGnomes(json.data.Brastlewark) || [],
   receivedAt: Date.now()
 });
 

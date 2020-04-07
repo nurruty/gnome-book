@@ -22,6 +22,7 @@ export default (state = {
         didInvalidate: false,
         gnomes: action.gnomes,
         professions: action.professions,
+        important: action.important,
         lastUpdated: action.receivedAt
       };
     default:

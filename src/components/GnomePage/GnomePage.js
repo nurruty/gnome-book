@@ -7,7 +7,7 @@ import { find } from 'lodash';
 import { fetchGnomesIfNeeded } from '../../actions';
 import LazyLoad from 'react-lazyload';
 import Loading from '../Loading/Loading';
-// Import can't be in conditional so use require.
+
 if (process.env.WEBPACK) {
   require('./GnomePage.css'); // eslint-disable-line global-require
 }
@@ -111,14 +111,16 @@ export class GnomePage extends Component {
                   <div className="col-12 card-title">
                     <h5>Professions</h5>
                   </div>
-                  <div className="">
-                    <ol style={{ listStyleType: 'none' }}>
+                  <div className="container">
+                    <div className="row">
                       {professions ? professions.map((profession, i) =>
-                        <li key={i} className="list-item">
+                      <div className="col-sm-6">
+                        <Link to={`/profession/${profession}`}>
                           {profession}
-                        </li>
+                        </Link>
+                      </div>
                       ) : <div>Unemployeed :(</div>}
-                    </ol>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -129,16 +131,16 @@ export class GnomePage extends Component {
                   <div className="col-12 card-title">
                     <h5>Friends</h5>
                   </div>
-                  <div className="">
-                    <ol style={{ listStyleType: 'none' }}>
+                  <div className="container">
+                    
                       {friends ? friends.map((friend, i) =>
+                      <div className="col-md-12">
                         <Link to={`/gnome/${friend}`}>
-                          <li key={i} className="list-item">
-                            {friend}
-                          </li>
+                          {friend}
                         </Link>
+                        </div>
                       ) : <div>Need some friends :(</div>}
-                    </ol>
+                    
                   </div>
                 </div>
               </div>

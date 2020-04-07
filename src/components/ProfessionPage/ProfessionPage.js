@@ -3,19 +3,20 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Meta from 'react-helmet';
 import { fetchGnomesIfNeeded } from '../../actions';
-import ProfessionList from '../ProfessionList/ProfessionList';
-import Pagination from '../Pagination/Pagination';
-
+import GnomesList from '../GnomesList/GnomesList';
+import Loading from '../Loading/Loading';
+import _ from 'lodash';
 
 if (process.env.WEBPACK) {
-  require('./ProfessionsPage.css'); // eslint-disable-line global-require
+  require('./ProfessionPage.css'); // eslint-disable-line global-require
 }
 
-export class ProfessionsPage extends Component {
+export class ProfessionPage extends Component {
   static propTypes = {
     isFetching: PropTypes.bool.isRequired,
     dispatch: PropTypes.func.isRequired,
     professions: PropTypes.object.isRequired,
+    params: PropTypes.object.isRequired
   }
   static getMeta() {
     return {
@@ -36,26 +37,20 @@ export class ProfessionsPage extends Component {
       ]
     };
   }
-
-
-  constructor(props) {
-    super(props);
-    this.state = { allProfessions: [], currentProfessions: [], currentPage: null, totalPages: null };
+  static getProfessionals(props) {
+    const professionName = props.params.professionName || '';
+    return props.professions[professionName] || [];
   }
-
-
   componentDidMount() {
     const { dispatch } = this.props;
     dispatch(fetchGnomesIfNeeded());
   }
 
-
-
   render() {
-    const { isFetching, gnomes, professions } = this.props;
-    const isEmpty = professions.length === 0;
-    const head = ProfessionsPage.getMeta();
-
+    const gnomes = ProfessionPage.getProfessionals(this.props);
+    const { professions, isFetching } = this.props;
+    const isEmpty = _.isEmpty(professions);
+    const head = ProfessionPage.getMeta();
     return (
       <div className="HomePage">
         <Meta
@@ -64,12 +59,11 @@ export class ProfessionsPage extends Component {
           link={head.link}
           meta={head.meta}
         />
-        <h3>Professions</h3>
-
+        <h3>{this.props.params.professionName}'s in town</h3>
         {isEmpty
-          ? (isFetching ? <h3>Loading...</h3> : <h4 className="HomePage-message">Empty :(</h4>)
+          ? <div style={{ paddingTop: '25%' }}><Loading /></div>
           : <div style={{ opacity: isFetching ? 0.5 : 1 }}>
-            <ProfessionList professions={professions} />
+            <GnomesList citizens={gnomes} />
           </div>
         }
       </div>
@@ -78,13 +72,12 @@ export class ProfessionsPage extends Component {
 }
 
 const mapStateToProps = (state) => {
-  const { gnomes = [], professions = {}, isFetching = false, lastUpdated } = state;
+  const { professions = {}, isFetching = false, lastUpdated } = state;
   return {
     professions,
-    gnomes,
     isFetching,
     lastUpdated
   };
 };
 
-export default connect(mapStateToProps)(ProfessionsPage);
+export default connect(mapStateToProps)(ProfessionPage);

@@ -4,8 +4,9 @@ import { connect } from 'react-redux';
 import Meta from 'react-helmet';
 import { fetchGnomesIfNeeded } from '../../actions';
 import InfoCard from '../InfoCard/InfoCard';
-import PeopleCard from '../PeopleCard/PeopleCard';
+import GnomeCard from '../GnomeCard/GnomeCard';
 import { Link } from 'react-router';
+import Loading from '../Loading/Loading';
 
 // Import can't be in conditional so use require.
 if (process.env.WEBPACK) {
@@ -17,11 +18,12 @@ export class HomePage extends Component {
     isFetching: PropTypes.bool.isRequired,
     dispatch: PropTypes.func.isRequired,
     gnomes: PropTypes.arrayOf(PropTypes.object.isRequired),
-    professions: PropTypes.object.isRequired
+    //professions: PropTypes.object.isRequired,
+    important: PropTypes.arrayOf(PropTypes.object.isRequired)
   }
   static getMeta() {
     return {
-      title: 'React Redux Boilerplate',
+      title: 'GnomeBook',
       link: [
         {
           rel: 'canonical',
@@ -33,7 +35,7 @@ export class HomePage extends Component {
           charset: 'utf-8'
         },
         {
-          name: 'description', content: 'Put the home page description here!'
+          name: 'description', content: ''
         }
       ]
     };
@@ -43,7 +45,8 @@ export class HomePage extends Component {
     dispatch(fetchGnomesIfNeeded());
   }
   render() {
-    const { gnomes, professions, isFetching } = this.props;
+    const { gnomes, professions, important, isFetching } = this.props;
+    console.log(important)
     const isEmpty = gnomes.length === 0;
     const head = HomePage.getMeta();
     return (
@@ -55,28 +58,34 @@ export class HomePage extends Component {
           meta={head.meta}
         />
         <div className="row">
-          <div className="col-6">
-            <Link to={'/citizens'}>
+          <div className="col-lg-6">
+            <Link to={'/gnomes'}>
               <InfoCard title="Total Population" data={gnomes.length} />
             </Link>
           </div>
-          <div className="col-6">
+          <div className="col-lg-6">
             <Link to={'/professions'}>
               <InfoCard title="Different Professions" data={Object.keys(professions).length} />
             </Link>
           </div>
         </div>
 
-        <h3>Famous Citizents</h3>
+        <h3>Relevant Gnomes</h3>
         <div className="row">
           <div className="col-lg-4">
-            <PeopleCard title="John Snow" data={'35'} />
+            {isEmpty ? <Loading /> :
+              <GnomeCard gnome={important[0]} />
+            }
           </div>
           <div className="col-lg-4">
-            <PeopleCard title="Donald Trump" data={'35'} />
+          {isEmpty ? <Loading /> :
+              <GnomeCard gnome={important[1]} />
+            }
           </div>
           <div className="col-lg-4">
-            <PeopleCard title="Madonna" data={'35'} />
+          {isEmpty ? <Loading /> :
+              <GnomeCard gnome={important[2]} />
+            } 
           </div>
         </div>
       </div>
@@ -85,13 +94,15 @@ export class HomePage extends Component {
 }
 
 const mapStateToProps = (state) => {
-  const { gnomes = [], professions = [], isFetching = false, lastUpdated } = state;
+  const { gnomes = [], professions = [], important = [], isFetching = false, lastUpdated } = state;
   return {
     gnomes,
     professions,
+    important,
     isFetching,
     lastUpdated
   };
 };
+
 
 export default connect(mapStateToProps)(HomePage);
