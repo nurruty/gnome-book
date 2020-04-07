@@ -4,6 +4,7 @@ import { shallow } from 'enzyme';
 import { expect } from 'chai';
 import { ProfessionPage } from './ProfessionPage';
 import mockProps, { professions } from '../../lib/mockProps';
+import GnomesList from '../GnomesList/GnomesList';
 
 // Make a setup() helper that passes props and renders the component with shallow rendering
 function setup() {
@@ -21,6 +22,7 @@ describe('ProfessionPage', () => {
   it('should render', () => {
     const { wrapper } = setup();
     expect(wrapper.find('.ProfessionPage')).to.have.length(1);
+    expect(wrapper.find(GnomesList).find('GnomesList').props().gnomes).not.to.be.undefined;
   });
 });
 /* eslint-enable no-undef */

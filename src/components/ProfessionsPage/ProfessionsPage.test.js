@@ -9,7 +9,8 @@ import mockProps, { professions } from '../../lib/mockProps';
 function setup() {
   // Mock required props
   const props = mockProps();
-  const wrapper = shallow(<ProfessionsPage professions={professions()} isFetching={false} {...props} />);
+  props.professions = professions();
+  const wrapper = shallow(<ProfessionsPage isFetching={false} {...props} />);
 
   return {
     props,

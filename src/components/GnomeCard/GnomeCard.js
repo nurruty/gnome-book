@@ -26,12 +26,12 @@ const GnomeCard = ({ gnome }) => {
       </div>
       <div className="gnome-card-footer">
         <div className="row">     
-          <div className="info col-6">
-            <span className="icon" title="Friends"><FontAwesomeIcon icon={faUserFriends} /></span>
+          <div className="info col-6 Friends">
+            <span className="icon" id="Friends" title="Friends"><FontAwesomeIcon icon={faUserFriends} /></span>
             {gnome.friends ? gnome.friends.length : 0}
           </div>
-          <div className="info col-6">
-            <span className="icon" title="Professions"><FontAwesomeIcon icon={faBriefcase} /></span>
+          <div className="info col-6 Professions">
+            <span className="icon" id="Professions" title="Professions"><FontAwesomeIcon icon={faBriefcase} /></span>
             {gnome.professions ? gnome.professions.length : 0}
           </div>
         </div>

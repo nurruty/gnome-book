@@ -37,7 +37,7 @@ const ProfessionList = props => {
         <div className="col-12">
           <ul className="list">
             {list.map((profession, i) =>
-              <LazyLoad>
+              <LazyLoad key={i}>
                 <Link to={`profession/${profession}`}>
                   <li key={i} className="list-group-item ProfessionList-gnome">
                     <div className="row">
@@ -49,7 +49,7 @@ const ProfessionList = props => {
                         {
                           _.take(props.professions[profession], 6).map((g, i) => 
                             
-                            <span title={g.name} className="avatar rounded-circle tail">
+                            <span key={i} title={g.name} className="avatar rounded-circle tail">
                                 <img alt={g.name} src={g.thumbnail} className="avatar" />
                             </span> 
                           )
@@ -71,7 +71,7 @@ const ProfessionList = props => {
 };
 
 ProfessionList.propTypes = {
-  professions: PropTypes.array.isRequired
+  professions: PropTypes.object.isRequired
 };
 
 export default ProfessionList;

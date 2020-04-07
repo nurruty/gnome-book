@@ -63,7 +63,7 @@ export class ProfessionPage extends Component {
         {isEmpty
           ? <div style={{ paddingTop: '25%' }}><Loading /></div>
           : <div style={{ opacity: isFetching ? 0.5 : 1 }}>
-            <GnomesList citizens={gnomes} />
+            <GnomesList gnomes={gnomes} />
           </div>
         }
       </div>

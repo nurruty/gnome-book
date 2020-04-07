@@ -17,13 +17,13 @@ export class GnomePage extends Component {
     dispatch: PropTypes.func.isRequired,
     isFetching: PropTypes.bool.isRequired
   }
-  static getMeta(id) {
+  static getMeta(name) {
     return {
-      title: `Post Detail Page - Post ${id}`,
+      title: `Gnome - ${name}`,
       link: [
         {
           rel: 'canonical',
-          href: `http://localhost:3000/gnome/${id}`
+          href: `http://localhost:3000/gnome/${name}`
         }
       ],
       meta: [
@@ -54,7 +54,7 @@ export class GnomePage extends Component {
     const { isFetching } = this.props;
     const friends = gnome.friends ? gnome.friends : [];
     const professions = gnome.professions ? gnome.professions : [];
-    const head = GnomePage.getMeta(gnome.id);
+    const head = GnomePage.getMeta(gnome.name);
     return (
       <div className="GnomePage">
         <Meta
@@ -113,7 +113,7 @@ export class GnomePage extends Component {
                     <h5>Professions</h5>
                   </div>
                   <div className="container">
-                    <div className="row">
+                    <div className="row Profs">
                       {professions ? professions.map(profession =>
                         <div className="col-sm-6">
                           <Link to={`/profession/${profession}`}>
