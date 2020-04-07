@@ -61,5 +61,5 @@ Run the test with:
 ```
 
 
-# Tecnologies
+# Technologies
 GnomeBook is written in React (v. 16.4.5) with Redux (v. 3.6.). Webpack (v. 1.13.1) is used to bundle the code and babel (v 6.10.4 as compiler. 
