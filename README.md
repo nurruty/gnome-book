@@ -45,6 +45,8 @@ In order to evaluate the app I suggest run it in production mode:
 npm run server
 ```
 
+Go to http://localhost:3000 and start helping gnomes!!
+
 # Problem
 First, I would like to write down what is my interpretation of the problem. When players arrive to Brastlewark they have two main concerns. First, they need to quickly know who live there and secondly, what activities do they perform. Having that information in mind, they may think of a better plan to help the citizens. So, the main goal of the app is to let the user quickly find gnomes, but also be able to divide the population by their profession and relationships between each other.
 
