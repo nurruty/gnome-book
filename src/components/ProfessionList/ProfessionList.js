@@ -29,7 +29,7 @@ const ProfessionList = (props) => {
   }
 
   return (
-    <div className="container ProfessionList">
+    <div className="container" data-test="ProfessionList">
       <div className="row">
         <div className="col-12">
           <form role="form">
@@ -42,7 +42,7 @@ const ProfessionList = (props) => {
           <ul className="list">
             {list.map((profession, i) =>
               <LazyLoad key={i}>
-                <Link to={`profession/${profession}`}>
+                <Link to={`profession/${profession}`} data-test="Link">
                   <li key={i} className="list-group-item ProfessionList-gnome">
                     <div className="row">
                       <div className="col-4" style={{padding: '10'}}>

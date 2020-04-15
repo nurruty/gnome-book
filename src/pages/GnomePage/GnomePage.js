@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import Meta from 'react-helmet';
 import { find } from 'lodash';
-import { fetchGnomesIfNeeded } from '../../actions';
+import { fetchGnomesIfNeeded } from '../../actions/gnomes';
 import Loading from '../../components/Loading/Loading';
 
 if (process.env.WEBPACK) {
@@ -51,7 +51,7 @@ export class GnomePage extends Component {
     const professions = gnome.professions ? gnome.professions : [];
     const head = GnomePage.getMeta(gnome.name);
     return (
-      <div className="GnomePage">
+      <div data-test="GnomePage">
         <Meta
           title={head.title}
           description={head.description}
@@ -62,7 +62,7 @@ export class GnomePage extends Component {
           <div className="col-md-8">
             <div className="card">
               <div className="card-header">
-                <h5 className="card-category">{gnome.name}</h5>
+                <h5 className="card-category" data-test="GnomeName">{gnome.name}</h5>
 
               </div>
               <div className="card-body">

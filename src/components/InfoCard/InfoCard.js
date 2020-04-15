@@ -9,13 +9,13 @@ if (process.env.WEBPACK) {
 const InfoCard = ({ title, data }) => {
   return (
 
-    <div className="card card-chart InfoCard">
+    <div className="card card-chart" data-test="InfoCard">
       <div className="card-header">
-        <h5 className="card-title">{title}</h5>
+        <h5 className="card-title" data-test="InfoTitle">{title}</h5>
       </div>
       <div className="card-body">
         <div className="chart-area">
-          <div className="card-data">
+          <div className="card-data" data-test="InfoData">
             {data}
           </div>
 

@@ -26,7 +26,7 @@ export default () => (
 export const gnomes = () => [
   { id: 1, name: 'Gnome', age: 125, weight: 25, heigth: 100, friends: [], professions: ['Medic'] },
   { id: 2, name: 'Gnome 2', age: 125, weight: 25, heigth: 100, friends: [], professions: ['Baker'] },
-  { id: 3, name: 'Gnome 3', age: 125, weight: 25, heigth: 100, friends: [], professions: ['Baker'] }
+  { id: 3, name: 'Gnome 3', age: 125, weight: 25, heigth: 100, friends: ['Gnome 2'], professions: ['Baker'] }
 ];
 export const professions = () => {
   return {

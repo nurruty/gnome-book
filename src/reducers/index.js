@@ -1,6 +1,10 @@
 import {
   REQUEST_GNOMES, RECEIVE_GNOMES
-} from '../actions';
+} from '../actions/gnomes';
+
+import {
+  REQUEST_PROFESSIONS, RECEIVE_PROFESSIONS
+} from '../actions/professions'
 
 export default (state = {
   isFetching: false,
@@ -21,8 +25,23 @@ export default (state = {
         isFetching: false,
         didInvalidate: false,
         gnomes: action.gnomes,
-        professions: action.professions,
         important: action.important,
+        lastUpdated: action.receivedAt
+      };
+
+    case REQUEST_PROFESSIONS:
+      return {
+        ...state,
+        isFetching: true,
+        didInvalidate: false
+      };
+
+    case RECEIVE_PROFESSIONS:
+      return {
+        ...state,
+        isFetching: false,
+        didInvalidate: false,
+        professions: action.professions,
         lastUpdated: action.receivedAt
       };
     default:

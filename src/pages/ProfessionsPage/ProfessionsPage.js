@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Meta from 'react-helmet';
-import { fetchGnomesIfNeeded } from '../../actions';
+import { fetchProfessionsIfNeeded } from '../../actions/professions';
 import ProfessionList from '../../components/ProfessionList/ProfessionList';
 
 if (process.env.WEBPACK) {
@@ -39,7 +39,7 @@ export class ProfessionsPage extends Component {
 
   componentDidMount() {
     const { dispatch } = this.props;
-    dispatch(fetchGnomesIfNeeded());
+    dispatch(fetchProfessionsIfNeeded());
   }
 
   render() {

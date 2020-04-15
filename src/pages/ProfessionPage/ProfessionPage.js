@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Meta from 'react-helmet';
 import _ from 'lodash';
-import { fetchGnomesIfNeeded } from '../../actions';
+import { fetchProfessionsIfNeeded } from '../../actions/professions';
 import GnomesList from '../../components/GnomesList/GnomesList';
 import Loading from '../../components/Loading/Loading';
 
@@ -38,7 +38,7 @@ export class ProfessionPage extends Component {
   }
   componentDidMount() {
     const { dispatch } = this.props;
-    dispatch(fetchGnomesIfNeeded());
+    dispatch(fetchProfessionsIfNeeded());
   }
 
   render() {

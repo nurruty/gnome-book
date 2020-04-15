@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Meta from 'react-helmet';
-import { fetchGnomesIfNeeded } from '../../actions';
+import { fetchGnomesIfNeeded } from '../../actions/gnomes';
 import GnomesList from '../../components/GnomesList/GnomesList';
 import Loading from '../../components/Loading/Loading';
 

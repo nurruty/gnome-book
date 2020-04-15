@@ -6,7 +6,7 @@ if (process.env.WEBPACK) {
 }
 
 const Loading = () => (
-  <div className="container">
+  <div className="container Loading">
     <div className="spinner-border spinner" />
   </div>
 );

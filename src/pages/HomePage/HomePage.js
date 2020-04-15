@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Meta from 'react-helmet';
 import { Link } from 'react-router';
-import { fetchGnomesIfNeeded } from '../../actions';
+import { fetchGnomesIfNeeded } from '../../actions/gnomes';
+import { fetchProfessionsIfNeeded } from '../../actions/professions'
 import InfoCard from '../../components/InfoCard/InfoCard';
 import GnomeCard from '../../components/GnomeCard/GnomeCard';
 import Loading from '../../components/Loading/Loading';
@@ -35,6 +36,7 @@ export class HomePage extends Component {
   componentDidMount() {
     const { dispatch } = this.props;
     dispatch(fetchGnomesIfNeeded());
+    dispatch(fetchProfessionsIfNeeded());
   }
   render() {
     const { gnomes, professions, important } = this.props;
