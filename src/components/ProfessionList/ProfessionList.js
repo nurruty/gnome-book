@@ -19,7 +19,11 @@ const ProfessionList = (props) => {
   if (props.professions) {
     list = state.filter.length > 0
     ? _.filter(Object.keys(props.professions), p => {
-      return p.match(state.filter) != null;
+      try{
+        return p.match(state.filter) != null;
+      }catch(e){
+        return true
+      }
     })
     : list = Object.keys(props.professions);
   }

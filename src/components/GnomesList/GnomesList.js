@@ -22,7 +22,11 @@ const GnomesList = (props) => {
   if (props.gnomes) {
     list = state.filter.length > 0
     ? _.filter(props.gnomes, (c) => {
-      return c.name.match(state.filter) != null;
+      try {
+        return c.name.match(state.filter) != null;
+      } catch(e) {
+        return true
+      }
     })
     : list = props.gnomes;
   }
