@@ -5,18 +5,13 @@ import { Link } from 'react-router';
 import Meta from 'react-helmet';
 import { find } from 'lodash';
 import { fetchGnomesIfNeeded } from '../../actions';
-import LazyLoad from 'react-lazyload';
-import Loading from '../Loading/Loading';
+import Loading from '../../components/Loading/Loading';
 
 if (process.env.WEBPACK) {
   require('./GnomePage.css'); // eslint-disable-line global-require
 }
 
 export class GnomePage extends Component {
-  static propTypes = {
-    dispatch: PropTypes.func.isRequired,
-    isFetching: PropTypes.bool.isRequired
-  }
   static getMeta(name) {
     return {
       title: `Gnome - ${name}`,
@@ -31,7 +26,7 @@ export class GnomePage extends Component {
           charset: 'utf-8'
         },
         {
-          name: 'description', content: 'Put the description here!'
+          name: 'description', content: ''
         }
       ]
     };
@@ -114,8 +109,8 @@ export class GnomePage extends Component {
                   </div>
                   <div className="container">
                     <div className="row Profs">
-                      {professions ? professions.map(profession =>
-                        <div className="col-sm-6">
+                      {professions ? professions.map((profession, index) =>
+                        <div className="col-sm-6" key={index}>
                           <Link to={`/profession/${profession}`}>
                             {profession}
                           </Link>
@@ -133,8 +128,8 @@ export class GnomePage extends Component {
                     <h5>Friends</h5>
                   </div>
                   <div className="container">
-                    {friends ? friends.map(friend =>
-                      <div className="col-md-12">
+                    {friends ? friends.map((friend, index) =>
+                      <div className="col-md-12" key={index}>
                         <Link to={`/gnome/${friend}`}>
                           {friend}
                         </Link>
@@ -158,6 +153,11 @@ const mapStateToProps = (state) => {
     isFetching,
     lastUpdated
   };
+};
+
+GnomePage.propTypes = {
+  dispatch: PropTypes.func.isRequired,
+  isFetching: PropTypes.bool.isRequired
 };
 
 export default connect(mapStateToProps)(GnomePage);

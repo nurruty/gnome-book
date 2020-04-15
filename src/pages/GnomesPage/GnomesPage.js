@@ -3,19 +3,14 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Meta from 'react-helmet';
 import { fetchGnomesIfNeeded } from '../../actions';
-import GnomesList from '../GnomesList/GnomesList';
-import Loading from '../Loading/Loading';
+import GnomesList from '../../components/GnomesList/GnomesList';
+import Loading from '../../components/Loading/Loading';
 
 if (process.env.WEBPACK) {
   require('./GnomesPage.css'); // eslint-disable-line global-require
 }
 
 export class GnomesPage extends Component {
-  static propTypes = {
-    isFetching: PropTypes.bool.isRequired,
-    dispatch: PropTypes.func.isRequired,
-    gnomes: PropTypes.arrayOf(PropTypes.object.isRequired),
-  }
   static getMeta() {
     return {
       title: 'GnomeBook',
@@ -30,7 +25,7 @@ export class GnomesPage extends Component {
           charset: 'utf-8'
         },
         {
-          name: 'description', content: 'Put the home page description here!'
+          name: 'description', content: ''
         }
       ]
     };
@@ -72,6 +67,12 @@ const mapStateToProps = (state) => {
     isFetching,
     lastUpdated
   };
+};
+
+GnomesPage.propTypes = {
+  isFetching: PropTypes.bool.isRequired,
+  dispatch: PropTypes.func.isRequired,
+  gnomes: PropTypes.arrayOf(PropTypes.object.isRequired),
 };
 
 export default connect(mapStateToProps)(GnomesPage);

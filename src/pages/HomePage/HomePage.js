@@ -2,23 +2,17 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Meta from 'react-helmet';
-import { fetchGnomesIfNeeded } from '../../actions';
-import InfoCard from '../InfoCard/InfoCard';
-import GnomeCard from '../GnomeCard/GnomeCard';
 import { Link } from 'react-router';
-import Loading from '../Loading/Loading';
+import { fetchGnomesIfNeeded } from '../../actions';
+import InfoCard from '../../components/InfoCard/InfoCard';
+import GnomeCard from '../../components/GnomeCard/GnomeCard';
+import Loading from '../../components/Loading/Loading';
 
 if (process.env.WEBPACK) {
   require('./HomePage.css'); // eslint-disable-line global-require
 }
 
 export class HomePage extends Component {
-  static propTypes = {
-    dispatch: PropTypes.func.isRequired,
-    gnomes: PropTypes.arrayOf(PropTypes.object.isRequired),
-    professions: PropTypes.object.isRequired,
-    important: PropTypes.arrayOf(PropTypes.object.isRequired)
-  }
   static getMeta() {
     return {
       title: 'GnomeBook',
@@ -75,14 +69,14 @@ export class HomePage extends Component {
             }
           </div>
           <div className="col-lg-4">
-          {isEmpty ? <Loading /> :
+            {isEmpty ? <Loading /> :
               <GnomeCard gnome={important[1]} />
             }
           </div>
           <div className="col-lg-4">
-          {isEmpty ? <Loading /> :
+            {isEmpty ? <Loading /> :
               <GnomeCard gnome={important[2]} />
-            } 
+            }
           </div>
         </div>
       </div>
@@ -91,7 +85,7 @@ export class HomePage extends Component {
 }
 
 const mapStateToProps = (state) => {
-  const { gnomes = [], professions = [], important = [], isFetching = false, lastUpdated } = state;
+  const { gnomes = [], professions = {}, important = [], isFetching = false, lastUpdated } = state;
   return {
     gnomes,
     professions,
@@ -99,6 +93,13 @@ const mapStateToProps = (state) => {
     isFetching,
     lastUpdated
   };
+};
+
+HomePage.propTypes = {
+  dispatch: PropTypes.func.isRequired,
+  gnomes: PropTypes.arrayOf(PropTypes.object.isRequired),
+  professions: PropTypes.object.isRequired,
+  important: PropTypes.arrayOf(PropTypes.object.isRequired)
 };
 
 

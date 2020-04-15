@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 // Import can't be in conditional so use require.
 if (process.env.WEBPACK) {
@@ -23,5 +24,9 @@ const InfoCard = ({ title, data }) => {
     </div>
 ); };
 
+InfoCard.propTypes = {
+  title: PropTypes.string.isRequired,
+  data: PropTypes.number.isRequired
+}; 
 
 export default InfoCard;

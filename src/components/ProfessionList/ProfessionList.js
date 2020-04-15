@@ -8,7 +8,7 @@ if (process.env.WEBPACK) {
   require('./ProfessionList.css'); // eslint-disable-line global-require
 }
 
-const ProfessionList = props => {
+const ProfessionList = (props) => {
   const [state, setState] = useState({ filter: '' });
 
   const handleChange = (e) => {
@@ -43,12 +43,10 @@ const ProfessionList = props => {
                     <div className="row">
                       <div className="col-4" style={{padding: '10'}}>
                         { profession }
-                      </div>
-                
+                      </div>            
                       <div className="avatar-group">
                         {
-                          _.take(props.professions[profession], 6).map((g, i) => 
-                            
+                          _.take(props.professions[profession], 6).map((g, i) =>                           
                             <span key={i} title={g.name} className="avatar rounded-circle tail">
                                 <img alt={g.name} src={g.thumbnail} className="avatar" />
                             </span> 
@@ -67,7 +65,7 @@ const ProfessionList = props => {
         </div>
       </div>
     </div>
-    )
+    );
 };
 
 ProfessionList.propTypes = {

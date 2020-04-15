@@ -5,7 +5,7 @@ if (process.env.WEBPACK) {
   require('./Loading.css'); // eslint-disable-line global-require
 }
 
-const Loading = props => (
+const Loading = () => (
   <div className="container">
     <div className="spinner-border spinner" />
   </div>

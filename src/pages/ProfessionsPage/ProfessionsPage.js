@@ -3,18 +3,13 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Meta from 'react-helmet';
 import { fetchGnomesIfNeeded } from '../../actions';
-import ProfessionList from '../ProfessionList/ProfessionList';
+import ProfessionList from '../../components/ProfessionList/ProfessionList';
 
 if (process.env.WEBPACK) {
   require('./ProfessionsPage.css'); // eslint-disable-line global-require
 }
 
 export class ProfessionsPage extends Component {
-  static propTypes = {
-    isFetching: PropTypes.bool.isRequired,
-    dispatch: PropTypes.func.isRequired,
-    professions: PropTypes.object.isRequired,
-  }
   static getMeta() {
     return {
       title: 'GnomeBook',
@@ -29,7 +24,7 @@ export class ProfessionsPage extends Component {
           charset: 'utf-8'
         },
         {
-          name: 'description', content: 'Put the home page description here!'
+          name: 'description', content: ''
         }
       ]
     };
@@ -46,8 +41,6 @@ export class ProfessionsPage extends Component {
     const { dispatch } = this.props;
     dispatch(fetchGnomesIfNeeded());
   }
-
-
 
   render() {
     const { isFetching, professions } = this.props;
@@ -83,6 +76,12 @@ const mapStateToProps = (state) => {
     isFetching,
     lastUpdated
   };
+};
+
+ProfessionsPage.propTypes = {
+  isFetching: PropTypes.bool.isRequired,
+  dispatch: PropTypes.func.isRequired,
+  professions: PropTypes.object.isRequired,
 };
 
 export default connect(mapStateToProps)(ProfessionsPage);

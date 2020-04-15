@@ -4,7 +4,7 @@ import { shallow } from 'enzyme';
 import { expect } from 'chai';
 import { ProfessionPage } from './ProfessionPage';
 import mockProps, { professions } from '../../lib/mockProps';
-import GnomesList from '../GnomesList/GnomesList';
+import GnomesList from '../../components/GnomesList/GnomesList';
 
 // Make a setup() helper that passes props and renders the component with shallow rendering
 function setup() {

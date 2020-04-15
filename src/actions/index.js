@@ -1,5 +1,6 @@
-import api from '../lib/api';
 import _ from 'lodash';
+import api from '../lib/api';
+
 
 export const REQUEST_GNOMES = 'REQUEST_GNOMES';
 export const RECEIVE_GNOMES = 'RECEIVE_GNOMES';
@@ -30,10 +31,10 @@ const calculateImportantGnomes = (gnomes) => {
     g.professions ? g.professionsCount = g.professions.length : g.professionsCount = 0;
   });
   return _.chain(gnomes)
-  .orderBy(['professionsCount'], 'desc')
-  .orderBy(['friendsCount' ], 'desc')
-  .take(3)
-  .value();
+    .orderBy(['professionsCount'], 'desc')
+    .orderBy(['friendsCount'], 'desc')
+    .take(3)
+    .value();
 };
 
 export const receiveGnomes = json => ({
@@ -57,9 +58,9 @@ export const receiveGnome = json => ({
 
 export const fetchGnomes = () => (
   dispatch => api('https://raw.githubusercontent.com/rrafols/mobile_test/master/data.json')
-    .then(
-      json => dispatch(receiveGnomes(json)),
-    )
+  .then(
+    json => dispatch(receiveGnomes(json)),
+  )
 );
 
 const shouldFetchGnomes = () => {

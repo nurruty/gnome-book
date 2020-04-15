@@ -65,7 +65,7 @@
     "express": "4.14.0",
     "extract-text-webpack-plugin": "1.0.1",
     "jsdom": "9.8.0",
-    "mocha": "3.1.2",
+    "mocha": "^7.1.1",
     "postcss": "5.2.4",
     "postcss-import": "8.1.2",
     "postcss-inline-comment": "3.0.0",
