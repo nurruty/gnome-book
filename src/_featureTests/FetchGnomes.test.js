@@ -4,7 +4,7 @@ import { fetchData } from '../actions/gnomes';
 import { gnomes } from '../lib/mockProps';
 import { expect } from 'chai';
 
-describe('Integration Test :: Fetch gnomes', () => {
+describe('Feature Test :: Fetch gnomes', () => {
 
     beforeEach(() => {
         moxios.install();

@@ -39,7 +39,7 @@ const ProfessionList = (props) => {
           </form>
         </div>
         <div className="col-12">
-          <ul className="list">
+          <ul className="list" data-test={list.length > 0 ? 'notEmpty' : 'empty'}>
             {list.map((profession, i) =>
               <LazyLoad key={i}>
                 <Link to={`profession/${profession}`} data-test="Link">

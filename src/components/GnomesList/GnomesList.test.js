@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
 import React from 'react';
 import { expect } from 'chai';
-import { shallow, sinon } from 'enzyme';
+import { shallow } from 'enzyme';
 import GnomesList from './GnomesList';
 import mockProps, { gnomes } from '../../lib/mockProps';
 import { findByTestAtrr, checkProps } from '../../../test';

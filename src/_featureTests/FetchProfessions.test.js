@@ -4,7 +4,7 @@ import { fetchData } from '../actions/professions';
 import { gnomes } from '../lib/mockProps';
 import { expect } from 'chai';
 
-describe('Integration Test :: Fetch professions', () => {
+describe('Feature Test :: Fetch professions', () => {
 
     beforeEach(() => {
         moxios.install();

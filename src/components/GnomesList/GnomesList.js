@@ -42,7 +42,7 @@ const GnomesList = (props) => {
           </form>
         </div>
         <div className="col-12">
-          <ul data-test="GnomesList" style={{padding: 0}}>
+          <ul data-test="GnomesList" className={list.length > 0 ? 'notEmpty' : 'empty'} style={{padding: 0}}>
             {list.map((gnome, i) =>
               <LazyLoad key={gnome.id} placeholder={<Loading />}>
                 <li key={i} className="list-group-item list-gnome">

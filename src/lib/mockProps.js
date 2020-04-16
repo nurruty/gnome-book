@@ -9,14 +9,9 @@ const fn = sinon.spy();
 
 export default () => (
   {
-    posts: [
-      {
-        title: 'Some title',
-        id: 1
-      }
-    ],
+    
     params: {
-      postID: '1'
+      gnomeID: '1'
     },
     dispatch: fn,
     isFetching: false
