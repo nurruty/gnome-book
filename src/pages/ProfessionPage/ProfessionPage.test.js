@@ -5,8 +5,8 @@ import { expect } from 'chai';
 import { ProfessionPage } from './ProfessionPage';
 import mockProps, { professions } from '../../lib/mockProps';
 import GnomesList from '../../components/GnomesList/GnomesList';
+import { findByTestAtrr, checkProps } from '../../../test';
 
-// Make a setup() helper that passes props and renders the component with shallow rendering
 function setup() {
   // Mock required props
   const props = mockProps();
@@ -18,11 +18,30 @@ function setup() {
   };
 }
 
-describe('ProfessionPage', () => {
-  it('should render', () => {
-    const { wrapper } = setup();
-    expect(wrapper.find('.ProfessionPage')).to.have.length(1);
-    expect(wrapper.find(GnomesList).find('GnomesList').props().gnomes).not.to.be.undefined;
+describe('Unit Test :: ProfessionPage', () => {
+
+  describe('Check prototypes', () => {
+    it('Should not throw a warning', () => {
+      const expectedProps = {
+        dispatch: () => {},
+        isFetching: true,
+        professions: professions(),
+        params: {}
+      }
+
+      const propsError = checkProps(ProfessionPage, expectedProps);
+      expect(propsError).to.be.undefined;
+    })
   });
+
+  describe('Render', ()=> {
+    const { wrapper } = setup();
+
+    it('Should render', () => {
+      const page = findByTestAtrr(wrapper, 'ProfessionPage')
+      expect(page).to.have.length(1);
+    });
+  })
+  
 });
 /* eslint-enable no-undef */

@@ -47,7 +47,7 @@ export class ProfessionPage extends Component {
     const isEmpty = _.isEmpty(professions);
     const head = ProfessionPage.getMeta();
     return (
-      <div className="ProfessionPage">
+      <div data-test="ProfessionPage">
         <Meta
           title={head.title}
           description={head.description}

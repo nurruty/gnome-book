@@ -25,4 +25,7 @@ const Header = () => (
   </nav>
 );
 
+Header.propTypes = {
+};
+
 export default Header;

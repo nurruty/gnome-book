@@ -28,7 +28,7 @@ export const receiveGnomes = json => ({
     receivedAt: Date.now()
 });
 
-const fetchData = () => (
+export const fetchData = () => (
     dispatch => api('https://raw.githubusercontent.com/rrafols/mobile_test/master/data.json')
     .then(
       json => dispatch(receiveGnomes(json)),

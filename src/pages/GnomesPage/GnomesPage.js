@@ -41,7 +41,7 @@ export class GnomesPage extends Component {
     const isEmpty = gnomes.length === 0;
     const head = GnomesPage.getMeta();
     return (
-      <div className="GnomesPage">
+      <div data-test="GnomesPage">
         <Meta
           title={head.title}
           description={head.description}

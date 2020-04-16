@@ -17,7 +17,7 @@ function setup() {
   };
 }
 
-describe('GnomePage', () => {
+describe('Unit Test :: GnomePage', () => {
 
   describe('Check prototypes', () => {
     it('Should not throw a warning', () => {

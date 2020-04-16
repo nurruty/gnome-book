@@ -6,7 +6,7 @@ import ProfessionList from './ProfessionList';
 import mockProps, { professions } from '../../lib/mockProps';
 import { findByTestAtrr, checkProps } from '../../../test';
 
-describe('ProfessionList', () => {
+describe('Unit Test :: ProfessionList', () => {
 
   describe('Check prototypes', () => {
     it('Should not throw a warning', () => {

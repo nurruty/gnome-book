@@ -4,8 +4,9 @@ import { shallow } from 'enzyme';
 import { expect } from 'chai';
 import { ProfessionsPage } from './ProfessionsPage';
 import mockProps, { professions } from '../../lib/mockProps';
+import { findByTestAtrr, checkProps } from '../../../test';
 
-// Make a setup() helper that passes props and renders the component with shallow rendering
+
 function setup() {
   // Mock required props
   const props = mockProps();
@@ -18,10 +19,29 @@ function setup() {
   };
 }
 
-describe('ProfessionsPage', () => {
-  it('should render', () => {
-    const { wrapper } = setup();
-    expect(wrapper.find('.ProfessionsPage')).to.have.length(1);
+describe('Unit Test :: ProfessionsPage', () => {
+ 
+  describe('Check prototypes', () => {
+    it('Should not throw a warning', () => {
+      const expectedProps = {
+        dispatch: () => {},
+        isFetching: true,
+        professions: professions(),
+      }
+
+      const propsError = checkProps(ProfessionsPage, expectedProps);
+      expect(propsError).to.be.undefined;
+    })
   });
+
+  describe('Render', ()=> {
+    const { wrapper } = setup();
+
+    it('Should render', () => {
+      const page = findByTestAtrr(wrapper, 'ProfessionsPage')
+      expect(page).to.have.length(1);
+    });
+  })
+
 });
 /* eslint-enable no-undef */

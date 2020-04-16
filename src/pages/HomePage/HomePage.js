@@ -43,7 +43,7 @@ export class HomePage extends Component {
     const isEmpty = gnomes.length === 0;
     const head = HomePage.getMeta();
     return (
-      <div className="HomePage">
+      <div data-test="HomePage">
         <Meta
           title={head.title}
           description={head.description}

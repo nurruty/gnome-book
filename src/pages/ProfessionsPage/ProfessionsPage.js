@@ -48,7 +48,7 @@ export class ProfessionsPage extends Component {
     const head = ProfessionsPage.getMeta();
 
     return (
-      <div className="ProfessionsPage">
+      <div data-test="ProfessionsPage">
         <Meta
           title={head.title}
           description={head.description}

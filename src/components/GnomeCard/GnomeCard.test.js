@@ -7,7 +7,7 @@ import { findByTestAtrr, checkProps } from '../../../test';
 
 const gnome = { id: 1, name: 'Gnome', thumbnail: 'img', friends: [], professions: ['Baker'] };
 
-describe('GnomeCard', () => {
+describe('Unit Test :: GnomeCard', () => {
 
   describe('Check prototypes', () => {
     it('Should not throw a warning', () => {

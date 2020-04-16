@@ -6,7 +6,7 @@ import InfoCard from './InfoCard';
 import { findByTestAtrr, checkProps } from '../../../test';
 
 
-describe('InfoCard', () => {
+describe('Unit Test :: InfoCard', () => {
 
   describe('Check prototypes', () => {
     it('Should not throw a warning', () => {

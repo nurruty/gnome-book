@@ -28,7 +28,7 @@ export const receiveProfessions = json => ({
     receivedAt: Date.now()
 });
 
-const fetchData = () => (
+export const fetchData = () => (
     dispatch => api('https://raw.githubusercontent.com/rrafols/mobile_test/master/data.json')
     .then(
       json => dispatch(receiveProfessions(json)),

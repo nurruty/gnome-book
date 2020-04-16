@@ -7,7 +7,8 @@ import Meta from 'react-helmet';
 import reducers from './reducers';
 import routes from './routes';
 import api from './lib/api';
-import { receiveGnomes } from './actions';
+import { receiveGnomes } from './actions/gnomes';
+import { receiveProfessions } from './actions/professions';
 
 export default (req, res) => {
   match({ routes, location: req.url }, (error, redirectLocation, renderProps) => {
@@ -36,7 +37,10 @@ export default (req, res) => {
         const store = createStore(reducers);
         api('https://raw.githubusercontent.com/rrafols/mobile_test/master/data.json')
           .then(
-            json => store.dispatch(receiveGnomes(json)),
+            json => { 
+              store.dispatch(receiveGnomes(json));
+              store.dispatch(receiveProfessions(json));
+            }
           )
           .then(() => {
             const preloadedState = store.getState();

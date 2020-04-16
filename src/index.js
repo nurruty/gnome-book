@@ -3,31 +3,11 @@ import 'bootstrap/dist/js/bootstrap.bundle.min';
 
 import React from 'react';
 import { render } from 'react-dom';
-import { createStore, applyMiddleware, compose } from 'redux';
 import { Provider } from 'react-redux';
 import { Router, browserHistory } from 'react-router';
-import thunk from 'redux-thunk';
-import createLogger from 'redux-logger';
-import gnomes from './reducers';
 import routes from './routes';
+import { store } from './createStore';
 
-
-// This allows us to use Redux dev tools.
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose; // eslint-disable-line
-
-const middleware = [thunk];
-if (process.env.NODE_ENV !== 'production') {
-  middleware.push(createLogger());
-}
-
-// With server rendering, we can grab the preloaded state.
-const preloadedState = window.__PRELOADED_STATE__ || {}; // eslint-disable-line
-
-const store = createStore(
-  gnomes,
-  preloadedState,
-  composeEnhancers(applyMiddleware(...middleware))
-);
 
 render(
   <Provider store={store}>

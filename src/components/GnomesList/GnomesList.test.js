@@ -6,7 +6,7 @@ import GnomesList from './GnomesList';
 import mockProps, { gnomes } from '../../lib/mockProps';
 import { findByTestAtrr, checkProps } from '../../../test';
 
-describe('GnomesList', () => {
+describe('Unit Test :: GnomesList', () => {
   
   describe('Check prototypes', () => {
     it('Should not throw a warning', () => {
