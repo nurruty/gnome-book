@@ -25,7 +25,7 @@
     "enzyme": "^3.1.0",
     "enzyme-adapter-react-16": "^1.0.2",
     "express": "4.14.0",
-    "jquery": "3.2.1",
+    "jquery": "3.4.0",
     "lodash": "^4.17.15",
     "moxios": "^0.4.0",
     "popper.js": "^1.16.1",
