@@ -4,7 +4,7 @@
 First download or clone the repository with
 
 ```
-git clone https://github.com/nurruty/front-end-assigment.git
+git clone https://github.com/nurruty/gnome-book.git
 ```
 
 Access the project
