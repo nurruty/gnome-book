@@ -26,7 +26,7 @@
     "enzyme-adapter-react-16": "^1.0.2",
     "express": "4.14.0",
     "jquery": "3.2.1",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.21",
     "moxios": "^0.4.0",
     "popper.js": "^1.16.1",
     "prop-types": "^15.6.0",
