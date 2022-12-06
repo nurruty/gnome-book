@@ -24,7 +24,7 @@
     "check-prop-types": "^1.1.2",
     "enzyme": "^3.1.0",
     "enzyme-adapter-react-16": "^1.0.2",
-    "express": "4.14.0",
+    "express": "4.17.3",
     "jquery": "3.2.1",
     "lodash": "^4.17.15",
     "moxios": "^0.4.0",
