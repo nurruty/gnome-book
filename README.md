@@ -1,5 +1,4 @@
 ## GnomeBook
-### Nicolas Urruy font-end assigment Altran
 
 First download or clone the repository with
 
